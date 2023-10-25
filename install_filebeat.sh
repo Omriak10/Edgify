@@ -98,7 +98,7 @@ processors:
         - '2006-01-02T15:04:05.999999999Z'
         - '2006-01-02T15:04:05.999-07:00'
 
-cloud.id:"Edgify:ZXVyb3BlLXdlc3QxLmdjcC5jbG91ZC5lcy5pbzo0NDMkMzNkMDFiOWJlN2U2NGM4M2JiNDZiMTQ3ZjI1MDljMzgkY2ViYmI1NTI0YTg3NGZkZDlmNzU3ODA0NDE0MTBmN2Q="
+cloud.id: "Edgify:ZXVyb3BlLXdlc3QxLmdjcC5jbG91ZC5lcy5pbzo0NDMkMzNkMDFiOWJlN2U2NGM4M2JiNDZiMTQ3ZjI1MDljMzgkY2ViYmI1NTI0YTg3NGZkZDlmNzU3ODA0NDE0MTBmN2Q="
 cloud.auth: "elastic:c5r7FoF6QPgnP2hXcWZ33gm3"
 
 output.elasticsearch.index: "edgify-edge-$environment_name"
