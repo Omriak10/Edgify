@@ -11,11 +11,11 @@ install_filebeat() {
   # Get the system name
   system_name=$(hostname)
 
-  # Ask the user for the environment name
-  read -p "Enter environment name: " environment_name
-
   # Get the local IP address
   local_ip=$(ip -o -4 addr show scope global | awk '{print $4}' | cut -d'/' -f1)
+
+  # Ask the user for the environment name
+  read -p "Enter environment name: " environment_name
 
   # Add Elastic repository and import GPG key
   echo "Adding Elastic repository..."
@@ -98,13 +98,17 @@ processors:
         - '2006-01-02T15:04:05.999999999Z'
         - '2006-01-02T15:04:05.999-07:00'
 
-cloud.id: "Edgify:ZXVyb3BlLXdlc3QxLmdjcC5jbG91ZC5lcy5pbzo0NDMkMzNkMDFiOWJlN2U2NGM4M2JiNDZiMTQ3ZjI1MDljMzgkY2ViYmI1NTI0YTg3NGZkZDlmNzU3ODA0NDE0MTBmN2Q="
+cloud.id:"Edgify:ZXVyb3BlLXdlc3QxLmdjcC5jbG91ZC5lcy5pbzo0NDMkMzNkMDFiOWJlN2U2NGM4M2JiNDZiMTQ3ZjI1MDljMzgkY2ViYmI1NTI0YTg3NGZkZDlmNzU3ODA0NDE0MTBmN2Q="
 cloud.auth: "elastic:c5r7FoF6QPgnP2hXcWZ33gm3"
 
 output.elasticsearch.index: "edgify-edge-$environment_name"
 setup.template.name: "edgify-ds-edge"
 setup.template.pattern: "edgify-edge-*"
 EOF
+
+  # Start and enable Filebeat service
+  sudo service filebeat start
+  sudo systemctl enable filebeat
 
   # Show Filebeat status
   echo "Checking Filebeat status..."
@@ -113,4 +117,3 @@ EOF
 
 # Call the function to install Filebeat
 install_filebeat
-
