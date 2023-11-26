@@ -5,7 +5,7 @@ services:
   edgify-agent:
     restart: always
     container_name: edgify-agent
-    image: 'edgify/edgify-agent:1.27.0'
+    image: 'edgify/edgify-agent:1.28.0'
     env_file:
       - edgify-agent.env
     volumes:
